@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
 
-   [AllowAnonymous]
+    [AllowAnonymous]
     public class UsersController : BaseApiController
     {
 
@@ -23,6 +23,7 @@ namespace API.Controllers
         //using actionresult so u can return http responses
         // wrapped in Task bc of the async 
         
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
@@ -35,9 +36,9 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            return await _context.Users.FindAsync(id);
 
-            return user;
+            
         }
 
     }
